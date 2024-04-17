@@ -1,0 +1,41 @@
+﻿@model Khinov_LR10.Models.UserModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <form method="post">
+        <div asp-validation-summary="ModelOnly"></div>
+        <p>
+            <label asp-for="userName"></label>
+            <input type="text" asp-for="userName">
+            <span asp-validation-for="userName"></span>
+        </p>
+        <p>
+            <label asp-for="email"></label>
+            <input type="email" asp-for="email">
+            <span asp-validation-for="email"></span>
+        </p>
+        <p>
+            <label asp-for="Day"></label>
+            <input type="date" asp-for="Day" asp-format="{0:yyyy-MM-dd}">
+            <span asp-validation-for="Day"></span>
+        </p>
+        <p>
+            <label asp-for="productConsult"></label>
+            <select asp-for="productConsult">
+                @foreach (var item in UserModel.productConsultList)
+                {
+                    <option value="@item">@item</option>
+                }
+            </select>
+            <span asp-validation-for="productConsult" />
+        </p>
+        <p>
+            <input type="submit" value="Send" />
+        </p>
+    </form>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive//jquery.validate.unobtrusive.min.js"></script>
